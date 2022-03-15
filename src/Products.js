@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 
 const Products = () => {
-  const [advice, setAdvice] = useState([]);
+  const [recomended, setRecomended] = useState([]);
 
   useEffect(() => {
       const url = "http://localhost:8080/recommendeds";
@@ -13,7 +13,7 @@ const Products = () => {
               const response = await fetch(url);
               const json = await response.json();
               console.log(json);
-              setAdvice(json);
+              setRecomended(json);
           } catch (error) {
               console.log("error", error);
           }
@@ -27,7 +27,7 @@ const Products = () => {
     <>
     <h3>Our recomended buys</h3>
     {
-      advice.map(r => (
+      recomended.map(r => (
 
         <div id={r.id} class="card">
           <img src={r.images[0]} style={{width:'100%'}}/>
